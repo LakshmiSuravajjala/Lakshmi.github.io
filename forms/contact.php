@@ -33,9 +33,14 @@
   );
   */
 
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
+  $contact->add_message( $_POST['name'], 'From: ');
+  $contact->add_message( $_POST['email'], 'Email: ');
+  $contact->add_message( $_POST['message'], 'Message: ', 10);
 
-  echo $contact->send();
+  // Send the email and echo the result
+  if ($contact->send()) {
+    echo 'Message sent successfully';
+  } else {
+    echo 'Failed to send message';
+  }
 ?>
